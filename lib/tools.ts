@@ -37,4 +37,25 @@ export function getTools(): ToolsFile {
   return cache;
 }
 
+export interface FilterParams {
+  category?: string;
+  q?: string;
+  network?: string;
+  source?: string;
+}
+
+export function filterTools(tools: Tool[], p: FilterParams): Tool[] {
+  const { category, q, network, source } = p;
+  return tools.filter((t) => {
+    if (category && !t.categories.includes(category)) return false;
+    if (network && t.network !== network) return false;
+    if (source === "open" && !t.openSource) return false;
+    if (q) {
+      const s = q.toLowerCase();
+      if (!`${t.name} ${t.description}`.toLowerCase().includes(s)) return false;
+    }
+    return true;
+  });
+}
+
 

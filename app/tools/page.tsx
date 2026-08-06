@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { getTools } from "@/lib/tools";
 import { RATING_LABELS, NETWORK_LABELS } from "@/lib/tool-labels";
 import { ToolsFilter } from "@/components/ToolsFilter";
@@ -10,15 +9,28 @@ export const metadata: Metadata = {
     "A categorized directory of privacy and security tools — browsers, email, messaging, VPN, passwords, OS hardening, and reputable darknet services.",
 };
 
+interface SearchParams {
+  category?: string;
+  q?: string;
+  network?: string;
+  source?: string;
+}
+
 const legend = [
   { rating: 3 as const, label: "Highly trusted", cls: "bg-highly/15 text-highly border-highly/30" },
   { rating: 2 as const, label: "Trusted", cls: "bg-trusted/15 text-trusted border-trusted/30" },
   { rating: 1 as const, label: "Caution", cls: "bg-caution/15 text-caution border-caution/30" },
 ];
 
-export default function ToolsPage({ searchParams }: { searchParams: Record<string, string | string[] | undefined> }) {
+export default async function ToolsPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const sp = await searchParams;
   const { categories, tools } = getTools();
-  const path = "/tools";
+  const initial = {
+    category: (sp.category as string) ?? "",
+    q: (sp.q as string) ?? "",
+    network: (sp.network as string) ?? "",
+    source: (sp.source as string) ?? "",
+  };
 
   return (
     <div className="py-10">
@@ -57,9 +69,7 @@ export default function ToolsPage({ searchParams }: { searchParams: Record<strin
         </div>
       </section>
 
-      <Suspense fallback={<p className="text-muted">Loading tools…</p>}>
-        <ToolsFilter categories={categories} tools={tools} basePath={path} />
-      </Suspense>
+      <ToolsFilter categories={categories} tools={tools} basePath="/tools" initial={initial} />
     </div>
   );
 }

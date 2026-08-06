@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { site } from "@/lib/site";
+import { getPostMetas } from "@/lib/blog";
 
 const categoryChips = [
   { href: "/tools?category=browser", label: "Browsers" },
@@ -12,6 +13,7 @@ const categoryChips = [
 ];
 
 export default function Home() {
+  const posts = getPostMetas().slice(0, 3);
   return (
     <div className="flex flex-col gap-16 py-12">
       <section className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] items-center">
@@ -101,7 +103,17 @@ export default function Home() {
             All posts
           </Link>
         </div>
-        <p className="text-muted">Posts coming soon.</p>
+        <ul className="grid gap-4 sm:grid-cols-3">
+          {posts.map((p) => (
+            <li key={p.slug}>
+              <Link href={`/blog/${p.slug}`} className="block h-full rounded-lg border border-line p-5 hover:border-accent hover:bg-raise">
+                <p className="text-xs text-muted">{p.date}</p>
+                <h3 className="mt-1 font-semibold text-ink leading-snug">{p.title}</h3>
+                <p className="mt-2 text-sm text-muted line-clamp-3">{p.description}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="rounded-xl border border-line p-6">
