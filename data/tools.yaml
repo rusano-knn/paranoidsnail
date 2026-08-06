@@ -1,0 +1,160 @@
+categories:
+  - id: browser
+    label: Browsers & Search
+    tagline: Where you spend your day. Make it leak less.
+  - id: email
+    label: Email
+    tagline: E2EE and zero-knowledge inboxes for boring, safe mail.
+  - id: messaging
+    label: Messaging
+    tagline: Encrypted chat for the people you actually talk to.
+  - id: vpn
+    label: VPN & DNS
+    tagline: Tunnel in, keep your ISP out of your business.
+  - id: password
+    label: Passwords & 2FA
+    tagline: The boring stuff that saves your whole digital life.
+  - id: os
+    label: OS & Device Hardening
+    tagline: Your machine, behaving itself.
+  - id: darknet
+    label: Darknet & Tor
+    tagline: Reputable onion services. Safety first, curiosity second.
+
+tools:
+  - name: Tor Browser
+    description: The official browser that routes your traffic through the Tor network. The standard for private browsing and the gateway to .onion sites.
+    categories: [browser, darknet]
+    network: darknet
+    rating: 3
+    url: https://www.torproject.org
+    openSource: true
+    lastChecked: 2026-08
+  - name: Mullvad Browser
+    description: A privacy-focused browser from the Mullvad/VPN team. Blocks fingerprinting and trackers out of the box.
+    categories: [browser]
+    network: clearnet
+    rating: 3
+    url: https://mullvad.net/en/browser
+    openSource: true
+    lastChecked: 2026-08
+  - name: Brave
+    description: A Chromium-based browser with strong default blocking of trackers and ads. Good balance of usability and privacy.
+    categories: [browser]
+    network: clearnet
+    rating: 2
+    url: https://brave.com
+    openSource: true
+    lastChecked: 2026-08
+  - name: DuckDuckGo
+    description: A search engine that doesn't profile you or build a filter bubble out of your history.
+    categories: [browser]
+    network: clearnet
+    rating: 2
+    url: https://duckduckgo.com
+    openSource: false
+    lastChecked: 2026-08
+  - name: Proton Mail
+    description: End-to-end encrypted email with a zero-knowledge team. The easiest big-name way to stop automated scanning of your inbox.
+    categories: [email]
+    network: clearnet
+    rating: 2
+    url: https://proton.me/mail
+    openSource: false
+    lastChecked: 2026-08
+  - name: Tuta (Tutanota)
+    description: Encrypted email with a fully open-source client, desktop and mobile apps, and a no-tracking policy.
+    categories: [email]
+    network: clearnet
+    rating: 2
+    url: https://tuta.com
+    openSource: true
+    lastChecked: 2026-08
+  - name: Signal
+    description: The cross-platform messaging app with end-to-end encryption by default, for calls and texts.
+    categories: [messaging]
+    network: clearnet
+    rating: 3
+    url: https://signal.org
+    openSource: true
+    lastChecked: 2026-08
+  - name: Session
+    description: A metadata-resistant messenger that routes through a decentralized network. No phone number needed.
+    categories: [messaging, darknet]
+    network: clearnet
+    rating: 2
+    url: https://getsession.org
+    openSource: true
+    lastChecked: 2026-08
+  - name: Mullvad VPN
+    description: A no-nonsense VPN with a flat price and anonymous account numbers. No email or name required to sign up.
+    categories: [vpn]
+    network: clearnet
+    rating: 3
+    url: https://mullvad.net
+    openSource: false
+    lastChecked: 2026-08
+  - name: Proton VPN
+    description: A VPN with a free tier and a transparent open-source ethos. Good for a first private connection.
+    categories: [vpn]
+    network: clearnet
+    rating: 2
+    url: https://protonvpn.com
+    openSource: false
+    lastChecked: 2026-08
+  - name: NextDNS
+    description: A privacy-oriented DNS resolver with blocking lists and analytics you can turn off. Works on almost anything.
+    categories: [vpn]
+    network: clearnet
+    rating: 2
+    url: https://nextdns.io
+    openSource: false
+    lastChecked: 2026-08
+  - name: Bitwarden
+    description: An open-source password manager with a generous free tier and self-hosting options.
+    categories: [password]
+    network: clearnet
+    rating: 3
+    url: https://bitwarden.com
+    openSource: true
+    lastChecked: 2026-08
+  - name: KeePassXC
+    description: A free, local-first password manager that keeps your vault file under your own control.
+    categories: [password]
+    network: clearnet
+    rating: 3
+    url: https://keepassxc.org
+    openSource: true
+    lastChecked: 2026-08
+  - name: Tails
+    description: A portable OS that lives on a USB stick, routes everything through Tor, and leaves no trace when you're done.
+    categories: [os, darknet]
+    network: clearnet
+    rating: 3
+    url: https://tails.net
+    openSource: true
+    lastChecked: 2026-08
+  - name: GrapheneOS
+    description: A hardened Android build focused on security and privacy, for supported Pixel devices.
+    categories: [os]
+    network: clearnet
+    rating: 3
+    url: https://grapheneos.org
+    openSource: true
+    lastChecked: 2026-08
+  - name: The Hidden Wiki
+    description: A long-running community directory of .onion links on the Tor network. Approach with the usual deep-web caution.
+    categories: [darknet]
+    network: darknet
+    rating: 1
+    url: http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion
+    openSource: true
+    lastChecked: 2026-08
+  - name: Darknet Live
+    description: A reviewed, moderated index of legal Tor hidden services. A safer starting point than raw link dumps.
+    categories: [darknet]
+    network: darknet
+    rating: 2
+    url: https://darknetlive.com
+    openSource: false
+    lastChecked: 2026-08
