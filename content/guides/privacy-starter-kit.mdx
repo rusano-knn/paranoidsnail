@@ -1,0 +1,84 @@
+---
+title: The Privacy Starter Kit
+description: Your first 20 minutes of digital hygiene, patiently explained — tools included.
+category: getting-started
+order: 1
+date: 2026-08-07
+tags: [getting-started, basics]
+tlDr: Change three defaults, get a password manager, and stop using your phone number as identity — in about 20 minutes.
+relatedTools: [Signal, Bitwarden, Mullvad VPN]
+---
+
+# The Privacy Starter Kit
+
+You don't need a weekend and a tinfoil hat. You need about twenty minutes and the willingness to
+change three defaults. That's it. Most people are leakier because of *habits*, not *threats* — and
+habits are easy to fix.
+
+> **Image: A simple 3-step flow diagram (Change defaults → Get a password manager → Stop using your
+> phone number as identity), snail-themed, with three labeled boxes.** — placeholder for owner to
+> author or request generation.
+
+## TL;DR
+
+- Turn off the obvious leaks in your browser and phone settings.
+- Get a password manager and put every password in it. Today.
+- Stop letting "your phone number" be the master key to your accounts.
+
+## Prereqs
+
+- Nothing. No account to create, no software you must buy.
+
+## Step 1 — Change three defaults
+
+1. **Browser:** switch your default search engine off anything that tracks you. Use DuckDuckGo or
+   Startpage on your existing browser, or just use Tor Browser when you want the strong stuff.
+2. **Phone:** turn off "personalized ads" and location history. On a phone in our inventory, these
+   are buried in Settings → Privacy. Boring, but it stops the biggest obvious drain.
+3. **Apps:** revoke permissions for apps that don't need them (camera, mic, contacts, location).
+   Ask: *why does a flashlight app need my location?* The answer is never "so it can shine better."
+
+> **Image: A phone Settings panel screenshot with the "Personalized ads" and "Location history"
+> toggles highlighted in red boxes with short annotations.** — placeholder.
+
+## Step 2 — Get a password manager
+
+Passwords are the single thing holding your entire digital life together, and most people reuse one
+or two everywhere. That's like using the same house key for your door, your car, and your bank.
+
+1. Pick one: **Bitwarden** (easy, generous free tier) or **KeePassXC** (local-first, full control).
+2. Generate a long, random master password. Write it on paper and keep it somewhere safe — don't
+   save it in your browser in plain text.
+3. Move your important accounts into it. Let it generate unique passwords for the rest.
+
+> **Image: A screenshot of Bitwarden's password generator generating a long random password, with an
+> arrow to "saved in vault" and a note "Vault is encrypted."** — placeholder.
+
+## Step 3 — Stop using your phone number as identity
+
+Your phone number is effectively public, portable, and passed around by carriers. When it's your 2FA
+backup and your password reset, anyone who steals the number can try to steal the accounts.
+
+- Prefer an **authenticator app** (2FA codes live on your device) over SMS codes where an app is
+  allowed.
+- Use an email address for account recovery that you actually control, not SMS alone.
+
+> **Image: A small side-by-side comparison: "SMS code (can be SIM-swapped)" vs "Authenticator app
+> (stays on your device)" with a clearly-labeled tradeoff note.** — placeholder.
+
+## Which tool
+
+- Want the least effort? **Bitwarden + a good browser default + 2FA app.**
+- Want more control? **KeePassXC + Tor Browser + a hardware/2FA app.**
+
+## Good / bad tradeoffs
+
+- A password manager is a *single point of failure if you forget the master password* — but that's
+  still dramatically better than reusing passwords.
+- Phone-number-as-identity is convenient; giving it up is mildly inconvenient but much safer.
+
+## Keep going
+
+- [Threat modeling for ordinary people](/guides/threat-modeling) — figure out who you're really
+  protecting against.
+- Browse the [tools](/tools) directory for the software above.
