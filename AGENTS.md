@@ -23,6 +23,8 @@ v4 + MDX. Static-first. Hosted on Vercel.
    contest.
 9. Self-host assets (fonts/icons); no external trackers or analytics. Only Vercel default logs.
 10. Don't add comments unless necessary; follow existing code conventions; write original copy.
-11. Every guide/blog entry and Tools category card requires a custom SVG illustration (anti-AI-slop).
-    All visuals are our own/GPLv3 — no stock imagery.
+11. Guide/blog posts require at least one **informative** image that teaches (screenshot, diagram,
+    infographic, side-by-side tradeoff) — not merely decorative. During build, render a descriptive
+    placeholder (labeled "image: <what it should show>" + alt + caption) so the owner authors it or
+    requests generation. All visuals our own/GPLv3 — no stock.
 12. Fold in SEO/GEO/AEO via server-rendered meta + structured data only; never reader-tracking.

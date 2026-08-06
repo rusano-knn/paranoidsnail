@@ -15,6 +15,10 @@ practical guidance (with a warmly paranoid snail who's extremely aware of everyt
 - **FAQ** — common questions answered with humor and accuracy.
 - **About** — who the snail is and what we stand for.
 
+## Contact
+Open a [GitHub Issue](https://github.com/rusano-knn/paranoidsnail/issues/new) — the snail reads
+every message.
+
 ## Stack
 
 - [Next.js](https://nextjs.org) (React) — currently Next 16 (see `AGENTS.md` for breaking-change

@@ -139,5 +139,5 @@ project via SSH clone and build fresh, PR-by-PR.
 | Repo name | User | **DECIDED: `paranoidsnail`** (public, GPLv3) — created 2026-08-07 |
 | License | User | **DECIDED: GPLv3** (deps permissive/compatible; FSD §12) |
 | SEO/GEO/AEO | User | **DECIDED: adopt as discoverability goals** (FSD §SEO; no-tracking preserved) |
-| Images on every page/post | User | **DECIDED: required** (custom SVG, anti-slop; FSD §5/§6) |
-| Contact method | User | **OPEN** — need a non-tracking address (Proton recommended) for About/Contact |
+| Images on every page/post | User | **DECIDED: required — informative** (screenshots/diagrams/infographics that teach; placeholders with descriptions until owner authors) — FSD §5/§6 |
+| Contact method | User | **DECIDED: GitHub Issues** (on-site contact links open the repo new-issue page) |
