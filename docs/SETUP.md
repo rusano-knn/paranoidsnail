@@ -156,5 +156,6 @@ Next.js (App Router) + TypeScript + Tailwind v4 + MDX. Static-first. Hosted on V
 - [x] **Domain picked: `snail.rusano.io.vn`** (env-only).
 - [x] **About style: both** (simple+strong, then lighthearted narrator).
 - [x] Scope/priority order reviewed in FSD/BRD.
-- [ ] Owner creates the empty GitHub repo and shares the SSH clone URL.
-- [ ] This SETUP is approved so the first PR can scaffold + CI.
+- [x] **Repo created: `paranoidsnail`** (public, GPLv3) — `git@github.com:rusano-knn/paranoidsnail.git`
+- [x] Base docs + housekeeping committed (PR #1).
+- [ ] This SETUP is approved so the next PR can scaffold app + CI.
