@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+  <title>ParanoidSnail</title>
+  <path d="M15 40a16 16 0 0 1 32 0v4H15z" fill="currentColor" opacity="0.15" />
+  <path
+    d="M20 44c0-11 6-18 16-18s16 7 16 18c0 6-7 9-16 9s-16-3-16-9Z"
+    fill="#3f9b5e"
+  />
+  <path
+    d="M39 40c6-3 10-7 10-13a6 6 0 1 0-12 0c0 3 1 5 2 8Z"
+    fill="#2f7a48"
+  />
+  <circle cx="27" cy="42" r="1.6" fill="#0d0f14" />
+  <circle cx="35" cy="42" r="1.6" fill="#0d0f14" />
+  <path d="M28 47c1.5 1 4.5 1 6 0" stroke="#0d0f14" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+  <path
+    d="M47 17 V22 M44 20 H50"
+    stroke="#c0c6cf"
+    strokeWidth="2.4"
+    strokeLinecap="round"
+  />
+  <path d="M18 18 L46 14 M18 29 L46 21" stroke="#c0c6cf" strokeWidth="1" opacity="0.7" />
+</svg>
