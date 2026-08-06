@@ -170,9 +170,13 @@ Categorized, practical, opinionated articles teaching privacy/security by doing.
   - **OS & Device Hardening**
   - **Darknet & Tor** (safety, first steps, reputable onion services)
   Each category has a short witty descriptor + its guides.
-- **IMAGE REQUIREMENT (anti-AI-slop — R~):** every Guide index card and every Guide article MUST
-  have a custom SVG hero/illustration (see DESIGN §5 "Illustration system"). No entry lists without
-  an image. All images hand-authored/generated, GPLv3, no stock.
+- **IMAGE REQUIREMENT (informative, not just decorative — clarified 2026-08-07):** images exist to
+  **teach**, not just decorate: screenshots, diagrams, and infographic-style visuals that convey
+  information (e.g. a threat-modeling diagram, a screenshot showing privacy settings, a side-by-side
+  tradeoff chart). Every Guide article and Blog post must contain at least one such informative
+  image. Place informative images as **descriptive placeholders** during build (clearly labeled
+  "image: <what it should show>", with alt text + caption) so the owner can author them (screenshot /
+  infographic) or ask us to generate them (via a tool / hand-authored SVG, GPLv3, no stock).
 
 ### 5.3 Guide article
 - MDX. TOC (progressive: anchor links; JS optional for scroll-spy). "Prereqs", "TL;DR",
@@ -205,8 +209,10 @@ Long-form editorial. Place for the flagship post and ongoing writing.
 ### 6.4 Blog mechanics
 - Index sorted newest-first; tags; per-post metadata (title, date, description, slug,tags).
 - RSS feed (static XML) — privacy-friendly way for P4 users to follow.
-- **IMAGE REQUIREMENT:** every post has a custom SVG hero illustration (anti-slop) + a generated
-  OpenGraph/social share image (1200×630) that reuses the same motif. No post without a hero image.
+- **IMAGE REQUIREMENT:** every post has at least one **informative** image (see §5.2 criteria:
+  screenshot/diagram/infographic that teaches) rendered as a descriptive placeholder during build
+  until the owner authors it; plus a generated OpenGraph/social share image (1200×630). No post
+  without a hero image / share image.
 
 ---
 
@@ -242,8 +248,10 @@ These are **site-discoverability** goals, orthogonal to the "leave no trail" mot
   narrator persona** section (the ParanoidSnail character: a reformed burner-phone hermit
   "extremely aware of everything"). Owner reviews and tunes the humor level.
 - Sketch: *Mission → "Who's behind the snail" (lighthearted) → "What we stand for" (independence,
-  no tracking, honesty) → "Contact/manatee" (humor) + links to Tools/Guides.*
-- Link to About in nav/footer.
+  no tracking, honesty) → "Contact" + links to Tools/Guides.*
+- **Contact = GitHub Issues** (owner-decided 2026-08-07): the on-site contact links open the repo's
+  new-issue page (e.g. a link styled as the snail "file an issue / talk to the snail"). No email
+  address is required. Link to About in nav/footer.
 
 ---
 

@@ -152,6 +152,10 @@ default from system, persisted in localStorage).
 - `:focus-visible` rings in accent, both themes.
 - Keyboard-tabbable filters with visible active chip states.
 - Lengthy copy tuned to the voice; no filler paragraphs.
+- **Content images teach, not decorate** (see FSD §5/§6): screenshots, diagrams, infographics that
+  convey info. Build renders them as **descriptive placeholders** (labeled `image: <what it should
+  show>` + alt + caption) so the owner can author (screenshot/infographic) or ask to generate them.
+  Placeholders are styled as clearly-marked framed slots — never a blank box that looks broken.
 
 ---
 
