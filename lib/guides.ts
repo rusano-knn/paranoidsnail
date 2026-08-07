@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
+import { sanitizeText } from "@/lib/sanitize";
 
 export interface GuideMeta {
   slug: string;
@@ -53,14 +54,14 @@ export function getGuideMetas(): (GuideMeta & { file: string })[] {
       return {
         slug: f.replace(/\.mdx$/, ""),
         file: f,
-        title: (data.title as string) ?? f,
-        description: (data.description as string) ?? "",
-        category: (data.category as string) ?? "getting-started",
+        title: sanitizeText(data.title ?? f),
+        description: sanitizeText(data.description),
+        category: sanitizeText(data.category) || "getting-started",
         order: (data.order as number) ?? 999,
         date: data.date ? String(data.date) : "",
-        tags: (data.tags as string[]) ?? [],
-        tlDr: data.tlDr as string | undefined,
-        relatedTools: data.relatedTools as string[] | undefined,
+        tags: (data.tags as unknown[] ?? []).map((t) => sanitizeText(t)),
+        tlDr: data.tlDr ? sanitizeText(data.tlDr) : undefined,
+        relatedTools: (data.relatedTools as unknown[] ?? []).map((t) => sanitizeText(t)),
       };
     })
     .sort((a, b) => a.order - b.order);
@@ -75,13 +76,13 @@ export function getGuideBySlug(slug: string): GuideFull | null {
   const { content, data } = matter(raw);
   return {
     slug: meta.slug,
-    title: data.title as string,
-    description: (data.description as string) ?? "",
-    category: data.category as string,
+    title: sanitizeText(data.title),
+    description: sanitizeText(data.description),
+    category: sanitizeText(data.category),
     date: data.date ? String(data.date) : "",
-    tags: (data.tags as string[]) ?? [],
-    tlDr: data.tlDr as string | undefined,
-    relatedTools: data.relatedTools as string[] | undefined,
+    tags: (data.tags as unknown[] ?? []).map((t) => sanitizeText(t)),
+    tlDr: data.tlDr ? sanitizeText(data.tlDr) : undefined,
+    relatedTools: (data.relatedTools as unknown[] ?? []).map((t) => sanitizeText(t)),
     content,
   };
 }
