@@ -1,7 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
-import { sanitizeText } from "@/lib/sanitize";
 
 export interface PostMeta {
   slug: string;
@@ -29,8 +28,8 @@ export function getPostMetas(): PostMeta[] {
       const { data } = matter(raw);
       return {
         slug: f.replace(/\.mdx$/, ""),
-        title: sanitizeText(data.title ?? f),
-        description: sanitizeText(data.description),
+        title: String(data.title ?? f),
+        description: String(data.description ?? ""),
         date: data.date ? String(data.date) : "",
         tags: (data.tags as string[]) ?? [],
         draft: (data.draft as boolean) ?? false,
@@ -49,8 +48,8 @@ export function getPostBySlug(slug: string): PostFull | null {
     if (data.draft) return null;
     return {
       slug,
-      title: sanitizeText(data.title ?? slug),
-      description: sanitizeText(data.description),
+      title: String(data.title ?? slug),
+      description: String(data.description ?? ""),
       date: data.date ? String(data.date) : "",
       tags: (data.tags as string[]) ?? [],
       content,

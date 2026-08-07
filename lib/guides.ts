@@ -1,7 +1,6 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
-import { sanitizeText } from "@/lib/sanitize";
 
 export interface GuideMeta {
   slug: string;
@@ -54,14 +53,14 @@ export function getGuideMetas(): (GuideMeta & { file: string })[] {
       return {
         slug: f.replace(/\.mdx$/, ""),
         file: f,
-        title: sanitizeText(data.title ?? f),
-        description: sanitizeText(data.description),
-        category: sanitizeText(data.category) || "getting-started",
+        title: String(data.title ?? f),
+        description: String(data.description ?? ""),
+        category: String(data.category ?? "") || "getting-started",
         order: (data.order as number) ?? 999,
         date: data.date ? String(data.date) : "",
-        tags: (data.tags as unknown[] ?? []).map((t) => sanitizeText(t)),
-        tlDr: data.tlDr ? sanitizeText(data.tlDr) : undefined,
-        relatedTools: (data.relatedTools as unknown[] ?? []).map((t) => sanitizeText(t)),
+        tags: (data.tags as string[]) ?? [],
+        tlDr: data.tlDr ? String(data.tlDr) : undefined,
+        relatedTools: (data.relatedTools as string[]) ?? [],
       };
     })
     .sort((a, b) => a.order - b.order);
@@ -76,13 +75,13 @@ export function getGuideBySlug(slug: string): GuideFull | null {
   const { content, data } = matter(raw);
   return {
     slug: meta.slug,
-    title: sanitizeText(data.title),
-    description: sanitizeText(data.description),
-    category: sanitizeText(data.category),
+    title: String(data.title),
+    description: String(data.description ?? ""),
+    category: String(data.category ?? ""),
     date: data.date ? String(data.date) : "",
-    tags: (data.tags as unknown[] ?? []).map((t) => sanitizeText(t)),
-    tlDr: data.tlDr ? sanitizeText(data.tlDr) : undefined,
-    relatedTools: (data.relatedTools as unknown[] ?? []).map((t) => sanitizeText(t)),
+    tags: (data.tags as string[]) ?? [],
+    tlDr: data.tlDr ? String(data.tlDr) : undefined,
+    relatedTools: (data.relatedTools as string[]) ?? [],
     content,
   };
 }
