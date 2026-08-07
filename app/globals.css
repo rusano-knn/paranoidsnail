@@ -97,3 +97,64 @@ body {
 .theme-script {
   /* placeholder: theme toggle uses no-JS <noscript> fallback */
 }
+
+/* Rich-content typography for guides/blog (MDX) */
+.prose-guide {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--fg);
+}
+.prose-guide > * + * {
+  margin-top: 1rem;
+}
+.prose-guide h1,
+.prose-guide h2,
+.prose-guide h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+}
+.prose-guide h1 { font-size: 2rem; margin-top: 2.5rem; }
+.prose-guide h2 { font-size: 1.5rem; margin-top: 2.25rem; }
+.prose-guide h3 { font-size: 1.2rem; margin-top: 1.75rem; }
+.prose-guide a {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-guide strong { font-weight: 600; }
+.prose-guide ul { list-style: disc; padding-left: 1.4rem; }
+.prose-guide ol { list-style: decimal; padding-left: 1.4rem; }
+.prose-guide blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--muted);
+  font-style: normal;
+}
+.prose-guide code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.prose-guide pre {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  background: var(--bg-raise);
+}
+.prose-guide pre code {
+  background: transparent;
+  padding: 0;
+  color: var(--fg);
+}
+.prose-guide hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}

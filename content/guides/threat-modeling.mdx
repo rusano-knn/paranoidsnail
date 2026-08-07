@@ -1,0 +1,198 @@
+---
+title: Threat modeling, the uncomplicated way
+description: Three plain questions that tell you who to protect yourself from — and save you from the paranoia spiral.
+category: getting-started
+order: 2
+date: 2026-08-07
+tags: [getting-started, threat-modeling]
+tlDr: Threat modeling is just asking who you're worried about, what they could take, and how far they'd go. Answer those honestly and the right tools pick themselves — most people need far less than they think.
+relatedTools: [Mullvad VPN, Signal, Tails]
+---
+
+# Threat modeling, the uncomplicated way
+
+Let me let you in on a secret: "security" sounds like a full-time job, and that's the problem.
+
+When people hear the word, they picture a person hunched over seven screens, running Tor on a
+laptop that's been glued shut, with a tin-foil hat sourced locally and ethically. Most of us look
+at that picture, feel tired just thinking about it, and quietly go back to using the same password
+for everything. (Nine times, if we're being honest. Or is that just me?)
+
+Here's what nobody tells you, though: that picture is a lie. Security doesn't have to be about
+defending against everyone at once. In fact, the moment you try to do that, you've already lost —
+because "everyone" is an infinite list, and your energy is not.
+
+The trick is to shrink the problem. There's a name for the skill of shrinking it, and it's called
+**threat modeling**. It sounds like something an accountant would do with too much time on their
+hands, but really it's just three honest questions you ask yourself. That's it. Answer them
+properly and the paranoia becomes something you can hold in your hand instead of something that
+lives in your head at 3 a.m.
+
+I should say up front: this is a blog, and I'm not a security professional. I'm someone who cares
+about this stuff and wants you to care a little too — but in a way that actually helps you, not one
+that just makes you worried. So let's take this slowly. The snail way.
+
+> **Image: A gentle 3-panel diagram. Panel one says "Who am I worried about?", panel two "What could
+> they take?", panel three "How far would they go?", with a soft arrow flowing from one to the next
+> and a door at the end labeled "your short list of tools".** — placeholder.
+
+## The three questions
+
+Here they are, in all their unglamorous glory.
+
+### Question one: Who am I worried about?
+
+This one feels silly to answer, but it's the most important, so don't skip it. It's not "everyone."
+Everyone isn't a person. Try to name actual people, or actual kinds of people.
+
+Is it the stranger at the coffee shop who might peer over your shoulder? The advertising company
+that seems to know an uncomfortable amount about you? A nosy coworker? An ex who knows your
+passwords? A government? A company you owe money to? A hacker who doesn't know you exist but will
+attack anyone with an old, unprotected device?
+
+Here's the thing about being specific: the answer changes everything downstream. Worrying about the
+coffee-shop snoop and worrying about a government are completely different problems with completely
+different solutions. If you don't pick, you'll try to solve both at once and do neither well.
+
+### Question two: What could they take?
+
+Once you've got a face (or an entity) in mind, ask what they'd actually want from you. This is
+usually a bit deflating, in a good way.
+
+Your saved passwords? Your bank login? Your social media accounts? A private photo? Your text
+messages? Your location history? Your address? The embarrassing search you did that one time at
+2 a.m.?
+
+Now here's the kicker: most of us, most of the time, are not carrying state secrets. We're carrying
+boring lives. That's not a put-down — it's a relief. It means the stakes are usually lower than the
+news would have you believe, which is exactly what makes good threat modeling possible.
+
+### Question three: How far would they go?
+
+This is the question people forget, and it's the one that stops the spiral. How much effort would
+this person actually spend to get at you?
+
+A casual snoop won't do much more than glance at your screen and move on. An ad network won't go
+through your front door — it just wants you to see more of its ads. A random attacker scanning the
+internet will try lazy passwords on thousands of accounts and call it a day.
+
+The point is that effort is a resource, and most threat actors spend it like a person budgeting for
+groceries. They want the easy win. The person who makes things even slightly annoying to reach is
+usually the person who gets left alone. Not because you're unbeatable — because you weren't worth
+the effort.
+
+So draw the line. In one of these cases you'll realize nobody is actually coming for you with more
+than a passing glance, and you can breathe. It happens to everyone who actually sits down and does
+this.
+
+## Now, a worked example — no thinking required
+
+Let me make this concrete, because I hate advice that floats in the air. Grab a real scenario.
+
+Meet — let's call her Maria. Plausibly you, plausibly your neighbor. Maria works from home, shops
+online, does the crossword at a café, and has never once thought about a threat model in her life.
+She just wants to feel a little less poke-able.
+
+- **Who is she worried about?** Her internet service provider, plus the general cloud of ad
+  trackers that follow her around the web like seagulls after a chip.
+- **What could they take?** Her browsing history. A rough profile of her habits, her interests,
+  where she logs in, what she buys.
+- **How far would they go?** Here's the honest part: they log things. Passively. By default. But
+  they're not going to break into her accounts or show up at her door. They're lazy and
+  commercial, not malicious.
+
+Now watch the magic. Because Maria named her worries, the answer pretty much writes itself. She
+doesn't need a full anonymity setup. She needs:
+
+- a **VPN** (or a good encrypted **DNS**) so her connection isn't logged by her ISP,
+- a **browser** that isn't the default one that leaks by design,
+- and an **ad and tracker blocker**, so the seagulls stop following.
+
+That's it. That's the whole plan. It takes her an afternoon, costs her maybe a few dollars a month,
+and covers what she actually loses sleep over.
+
+> **Image: A split screen, "before" and "after". On the left a tangle of companies peeking at a
+> laptop. On the right the same laptop behind a simple locked door, with one small lock saying VPN
+> and one saying ad-blocker. Nothing dramatic — just a calmer picture.** — placeholder.
+
+Notice what she does *not* need: Tails. No anonymity OS, no hardware security keys, no burner phone
+in a sock drawer. For Maria's worries, those tools would be like using a fire extinguisher as a
+fly swatter. Effective, terrifying, and wildly out of proportion.
+
+Now take the other end of the scale for contrast. Imagine a journalist reporting on something their
+government would rather they didn't. The good news is the tooling changes; the same three questions
+still drive it. That person's "who" is organized and well-funded. Their "what" is their identity,
+location, and sources. Their "how far" is very, very far. For them, Tails and Tor and hardware keys
+and careful attention to metadata stop being overkill and become the proportionate, sensible
+answer.
+
+Same method. Different answers. That's the whole game — matching the tool to the honest answers,
+not to a marketing brochure.
+
+## The honest version: what this is good at, and what it isn't
+
+I've been pretty positive so far, so let me do the balanced thing and talk about the good and the
+less-good. Trust nothing that's only one of those.
+
+The good: threat modeling is basically free. It costs you ten minutes and a cup of coffee, and it
+turns a vague, scary feeling into a short list of concrete actions. It also stops you from buying a
+pile of shiny security gadgets you don't need. That alone pays for itself.
+
+The good also includes this: it's honest. It doesn't promise you "total privacy" or "bulletproof"
+anything, because those don't exist. Instead it tells you where your actual weak points are and
+lets you pick which ones are worth plugging.
+
+The less-good: it's only as useful as your honesty. If you hand-wave the questions — "oh, I don't
+need to think about that" — you'll produce a plan that covers nothing. If you lie and say the
+government is after you when really you're just worried about an ad network, you'll buy Tails and
+fear your own shoelaces for no reason, and none of it helps the actual problem.
+
+The other less-good thing: threat modeling doesn't protect you from the person standing behind you.
+No framework fixes a password shared with the wrong person, scammed you into giving away, or a
+five-second shoulder-surf. These tools handle the far-away threats. The close-up, human-shaped ones
+are a different problem, and it's worth knowing the difference.
+
+So use it for what it's for, and don't be embarrassed by what it's not. It's a compass, not a
+forcefield.
+
+## The trap, and how to slip it
+
+There's one trap you should see coming from a mile away, because it catches almost everyone,
+including me: the demand for perfection.
+
+Here's how it goes. You set up the VPN, you block the trackers, you feel great. Then you hear about
+one more thing — maybe a clever fingerprinting trick, maybe a new exploit — and you think: "if I
+can't stop that, what was the point of any of this?" The next week you're comparing anonymizing
+operating systems at midnight and feeling guilty about your router.
+
+That's the paranoia spiral. And it's the fastest way to quit privacy forever, because you can never
+be perfect, and "never perfect" turns into "why bother." It's a loop designed to end in exhaustion,
+not in safety.
+
+The snail's view on this — and I'm partial, obviously — is that the spiral isn't worth respecting
+enough to climb into. Perfection isn't a destination you can pack for, so don't plan that trip.
+Instead, do something smaller and measurable, feel good about it, and come back later for the next
+small thing. Twenty minutes of real improvement, on purpose, does more for you than a year of
+guilt about the twenty minutes you didn't do.
+
+Good enough is a real, respectable finish line. "Abandoned because I couldn't be perfect" is not a
+finish line at all. Choose the first one. Your future self, drinking its coffee and not panicking,
+will thank you.
+
+> **Image: A small road-sign drawing with two arrows. One points down, labeled "chase perfection →
+> give up". The other points gently up a hill, labeled "small steps → keep going". A snail is
+> visible on the upward path, mid-stride and perfectly fine with its pace.** — placeholder.
+
+## Where to go from here
+
+You don't need to become an expert today. You just need the three questions in your pocket, and a
+plan as small as your honest answers suggest. For most of us, that plan is a VPN, a decent browser,
+and a blocker — nothing that will make your grandkids laugh at you.
+
+If you want the concrete first steps, the [Privacy Starter Kit](/guides/privacy-starter-kit) walks
+you through the basics in a sensible order. And when you're ready to start choosing tools rather
+than just hearing about them, the [tools list](/tools) is a good place to browse with your new,
+shrunken problem in hand.
+
+Go slow. Keep it small. And for heaven's sake, stop trying to defend against everyone — you've got
+better things to drink your coffee over.

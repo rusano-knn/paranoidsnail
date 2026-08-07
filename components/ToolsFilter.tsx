@@ -1,72 +1,80 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Tool, Category } from "@/lib/tools";
 import { ToolCard } from "@/components/ToolCard";
 
-interface Params {
-  category?: string;
-  q?: string;
-  network?: string;
-  source?: string;
+interface State {
+  category: string;
+  q: string;
+  network: string;
+  source: string;
 }
 
 export function ToolsFilter({
   categories,
   tools,
   basePath,
+  initial,
 }: {
   categories: Category[];
   tools: Tool[];
   basePath: string;
+  initial: State;
 }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const [state, setState] = useState<State>(initial);
 
-  const category = searchParams.get("category") ?? "";
-  const q = searchParams.get("q") ?? "";
-  const network = searchParams.get("network") ?? "";
-  const source = searchParams.get("source") ?? "";
+  const filtered = useMemo(
+    () =>
+      tools.filter((t) => {
+        if (state.category && !t.categories.includes(state.category)) return false;
+        if (state.network && t.network !== state.network) return false;
+        if (state.source === "open" && !t.openSource) return false;
+        if (state.q) {
+          const s = state.q.toLowerCase();
+          if (!`${t.name} ${t.description}`.toLowerCase().includes(s)) return false;
+        }
+        return true;
+      }),
+    [tools, state]
+  );
 
-  const filtered = useMemo(() => {
-    return tools.filter((t) => {
-      if (category && !t.categories.includes(category)) return false;
-      if (network && t.network !== network) return false;
-      if (source === "open" && !t.openSource) return false;
-      if (q) {
-        const s = q.toLowerCase();
-        if (!(`${t.name} ${t.description}`.toLowerCase().includes(s))) return false;
-      }
-      return true;
-    });
-  }, [tools, category, q, network, source]);
-
-  // Push state updates to the URL so the state is shareable + works on reload (progressive).
-  function update(patch: Partial<Params>) {
-    const next = new URLSearchParams(searchParams.toString());
-    (Object.keys(patch) as (keyof Params)[]).forEach((k) => {
-      const v = patch[k];
-      if (v) next.set(k, v);
-      else next.delete(k);
-    });
-    const qs = next.toString();
+  function update(patch: Partial<State>) {
+    const next = { ...state, ...patch };
+    setState(next);
+    const sp = new URLSearchParams();
+    if (next.category) sp.set("category", next.category);
+    if (next.q) sp.set("q", next.q);
+    if (next.network) sp.set("network", next.network);
+    if (next.source) sp.set("source", next.source);
+    const qs = sp.toString();
     router.replace(qs ? `${basePath}?${qs}` : basePath, { scroll: false });
   }
 
+  const chip = (value: string, active: boolean, onClick: () => void, label: string) => (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className={`rounded-full border px-3 py-1 text-sm ${
+        active ? "border-accent bg-accent text-onaccent" : "border-line hover:bg-raise"
+      }`}
+    >
+      {label}
+    </button>
+  );
+
   return (
     <div>
-      <form
-        method="get"
-        action={basePath}
-        className="border border-line rounded-xl bg-raise p-4 space-y-4"
-      >
+      <form method="get" action={basePath} className="border border-line rounded-xl bg-raise p-4 space-y-4">
         <div className="flex flex-wrap gap-2 items-center">
           <label htmlFor="tools-search" className="sr-only">Search tools</label>
           <input
             id="tools-search"
             name="q"
-            defaultValue={q}
+            defaultValue={state.q}
             placeholder="Search tools…"
             className="flex-1 min-w-[180px] rounded-md border border-line bg-raise px-3 py-2 text-sm"
           />
@@ -78,69 +86,35 @@ export function ToolsFilter({
           </button>
         </div>
 
+        {/* Live controls mirror the form's fields so JS users get instant results
+            while no-JS users can still submit the GET form above. */}
+        <input type="hidden" name="category" value={state.category} />
+        <input type="hidden" name="network" value={state.network} />
+        <input type="hidden" name="source" value={state.source} />
+
         <div className="flex flex-wrap gap-3 text-sm">
-          <fieldset className="flex items-center gap-2">
-            <legend className="sr-only">Network</legend>
-            <button
-              type="button"
-              aria-pressed={network === ""}
-              className="rounded-full border border-line px-3 py-1 hover:bg-raise"
-              onClick={() => update({ network: network === "" ? "" : "" })}
-            >
-              All networks
-            </button>
-            <button
-              type="button"
-              aria-pressed={network === "clearnet"}
-              className="rounded-full border border-line px-3 py-1 hover:bg-raise"
-              onClick={() => update({ network: network === "clearnet" ? "" : "clearnet" })}
-            >
-              Clearnet
-            </button>
-            <button
-              type="button"
-              aria-pressed={network === "darknet"}
-              className="rounded-full border border-line px-3 py-1 hover:bg-raise"
-              onClick={() => update({ network: network === "darknet" ? "" : "darknet" })}
-            >
-              .onion
-            </button>
-          </fieldset>
-          <button
-            type="button"
-            aria-pressed={source === "open"}
-            className="rounded-full border border-line px-3 py-1 hover:bg-raise"
-            onClick={() => update({ source: source === "open" ? "" : "open" })}
-          >
-            Open source only
-          </button>
+          <span className="inline-flex flex-wrap gap-2">
+            {chip("", state.network === "", () => update({ network: "" }), "All networks")}
+            {chip("clearnet", state.network === "clearnet", () => update({ network: "clearnet" }), "Clearnet")}
+            {chip("darknet", state.network === "darknet", () => update({ network: "darknet" }), ".onion")}
+          </span>
+          <span className="inline-flex flex-wrap gap-2">
+            {chip("open", state.source === "open", () => update({ source: state.source === "open" ? "" : "open" }), "Open source only")}
+          </span>
         </div>
 
         <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
-            aria-pressed={category === ""}
-            className="rounded-full border border-line px-3 py-1 text-sm hover:bg-raise"
-            onClick={() => update({ category: "" })}
-          >
-            All
-          </button>
+          {chip("", state.category === "", () => update({ category: "" }), "All")}
           {categories.map((c) => (
-            <button
-              key={c.id}
-              type="button"
-              aria-pressed={category === c.id}
-              className="rounded-full border border-line px-3 py-1 text-sm hover:bg-raise"
-              onClick={() => update({ category: category === c.id ? "" : c.id })}
-            >
-              {c.label}
-            </button>
+            <span key={c.id}>
+              {chip(c.id, state.category === c.id, () => update({ category: state.category === c.id ? "" : c.id }), c.label)}
+            </span>
           ))}
         </div>
 
         <noscript>
           <p className="text-xs text-muted">
-            No script? Hit <strong>Filter</strong> above to apply your choices.
+            No script? Pick your options and hit <strong>Filter</strong> to apply them.
           </p>
         </noscript>
       </form>
