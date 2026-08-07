@@ -1,6 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+function subscribe(callback: () => void) {
+  window.addEventListener("ps:theme", callback);
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  mq.addEventListener("change", callback);
+  return () => {
+    window.removeEventListener("ps:theme", callback);
+    mq.removeEventListener("change", callback);
+  };
+}
+
+function getSnapshot(): "light" | "dark" {
+  return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+}
+
+function getServerSnapshot(): "light" | "dark" {
+  return "light";
+}
+
+function applyTheme(next: "light" | "dark") {
+  document.documentElement.setAttribute("data-theme", next);
+  try {
+    localStorage.setItem("theme", next);
+  } catch {
+    /* ignore */
+  }
+  window.dispatchEvent(new Event("ps:theme"));
+}
 
 function Sun() {
   return (
@@ -20,33 +48,7 @@ function Moon() {
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark" | null>(() => {
-    if (typeof document === "undefined") return null;
-    return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-  });
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => {
-      if (!localStorage.getItem("theme")) {
-        const next = mq.matches ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", next);
-        setTheme(next);
-      }
-    };
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-
-  function apply(next: "light" | "dark") {
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem("theme", next);
-    } catch {
-      /* ignore */
-    }
-  }
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   return (
     <span className="inline-flex items-center gap-1">
@@ -55,7 +57,7 @@ export function ThemeToggle() {
         aria-label="Use light theme"
         aria-pressed={theme === "light"}
         className="rounded-md px-2 py-1.5 text-muted hover:text-ink hover:bg-raise"
-        onClick={() => apply("light")}
+        onClick={() => applyTheme("light")}
       >
         <Sun />
       </button>
@@ -64,7 +66,7 @@ export function ThemeToggle() {
         aria-label="Use dark theme"
         aria-pressed={theme === "dark"}
         className="rounded-md px-2 py-1.5 text-muted hover:text-ink hover:bg-raise"
-        onClick={() => apply("dark")}
+        onClick={() => applyTheme("dark")}
       >
         <Moon />
       </button>

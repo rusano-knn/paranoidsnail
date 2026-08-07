@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { getPostBySlug, getPostMetas } from "@/lib/blog";
+import { extractToc } from "@/lib/toc";
+import { ArticleShell, headingComponents } from "@/components/ArticleShell";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -24,15 +26,21 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const { content } = await compileMDX<{}>({ source: post.content });
+  const { content } = await compileMDX<{}>({
+    source: post.content,
+    components: headingComponents(),
+  });
+  const toc = extractToc(post.content);
+  const otherPosts = getPostMetas().filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
-    <article className="py-10 max-w-3xl">
+    <ArticleShell
+      toc={toc}
+      breadcrumb={<Link href="/blog" className="text-accent-strong hover:underline">Blog</Link>}
+      sideLinks={otherPosts.map((p) => ({ href: `/blog/${p.slug}`, label: `Post: ${p.title}` }))}
+    >
       <header className="mb-8">
-        <nav className="text-sm text-muted" aria-label="Breadcrumb">
-          <Link href="/blog" className="text-accent-strong hover:underline">Blog</Link>
-        </nav>
-        <h1 className="mt-3 font-display text-3xl sm:text-4xl font-bold leading-tight">
+        <h1 className="font-display text-3xl sm:text-4xl font-bold leading-tight">
           {post.title}
         </h1>
         <p className="mt-3 text-muted">{post.description}</p>
@@ -48,13 +56,13 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="prose-guide">{content}</div>
+      <div className="prose-guide [&_h2]:scroll-mt-24">{content}</div>
 
-      <div className="mt-10 border-t border-line pt-6">
+      <div className="mt-10">
         <Link href="/blog" className="text-sm text-accent-strong hover:underline">
           ← All posts
         </Link>
       </div>
-    </article>
+    </ArticleShell>
   );
 }

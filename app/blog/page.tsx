@@ -16,15 +16,18 @@ export default function BlogPage() {
       <header className="mb-8">
         <p className="font-mono text-sm text-accent-strong uppercase tracking-wider">long-form</p>
         <h1 className="mt-2 font-display text-3xl sm:text-4xl font-bold">Blog</h1>
-        <div className="mt-3 flex items-center gap-4">
-          <p className="max-w-2xl text-muted">
-            Editorials and deep dives. Written slowly, checked twice, and — you guessed it — leaving
-            no trail.
-          </p>
+        <p className="mt-3 max-w-2xl text-muted">
+          Editorials and deep dives. Written slowly, checked twice, and — you guessed it — leaving
+          no trail.
+        </p>
+        <div className="mt-4">
           <a
             href="/rss.xml"
-            className="hidden sm:inline-block shrink-0 text-sm text-accent-strong underline underline-offset-4"
+            className="inline-flex items-center gap-2 rounded-md border border-line bg-raise px-3 py-1.5 text-sm text-ink hover:border-accent"
           >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M4 11a9 9 0 0 1 9 9H9a5 5 0 0 0-5-5v-4Zm0-7a16 16 0 0 1 16 16h-4A12 12 0 0 0 4 8V4Zm0 13a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z" />
+            </svg>
             RSS feed
           </a>
         </div>

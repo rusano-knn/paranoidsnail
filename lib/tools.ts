@@ -13,6 +13,7 @@ export interface Category {
 
 export interface Tool {
   name: string;
+  icon?: string;
   description: string;
   categories: string[];
   network: Network;

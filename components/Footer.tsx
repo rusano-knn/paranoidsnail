@@ -1,30 +1,21 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 
-const groups = [
-  {
-    heading: "Explore",
-    links: [
-      { href: "/tools", label: "Tools" },
-      { href: "/guides", label: "Guides" },
-      { href: "/blog", label: "Blog" },
-    ],
-  },
-  {
-    heading: "Learn",
-    links: [
-      { href: "/faq", label: "FAQ" },
-      { href: "/about", label: "About" },
-    ],
-  },
+const links = [
+  { href: "/tools", label: "Tools" },
+  { href: "/guides", label: "Guides" },
+  { href: "/blog", label: "Blog" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/about", label: "About" },
+  { href: "/privacy", label: "Privacy" },
 ];
 
 export function Footer() {
   return (
     <footer className="border-t border-line mt-16">
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-2 sm:grid-cols-4 gap-8">
-        <div className="col-span-2">
-          <p className="font-display font-bold text-ink">{site.name}</p>
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-10 grid gap-8 sm:grid-cols-3">
+        <div className="sm:col-span-2">
+          <p className="font-display text-lg font-bold text-ink">{site.name}</p>
           <p className="mt-2 text-sm text-muted max-w-xs">{site.tagline}</p>
           <a
             href={site.repoIssueUrl}
@@ -33,39 +24,25 @@ export function Footer() {
             Talk to the snail (GitHub Issues)
           </a>
         </div>
-        {groups.map((g) => (
-          <div key={g.heading}>
-            <h2 className="text-sm font-semibold text-ink">{g.heading}</h2>
-            <ul className="mt-2 space-y-1.5">
-              {g.links.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="text-sm text-muted hover:text-ink">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-        <div>
-          <h2 className="text-sm font-semibold text-ink">Policy</h2>
+        <nav aria-label="Footer">
+          <h2 className="text-sm font-semibold text-ink">Learn</h2>
           <ul className="mt-2 space-y-1.5">
-            <li>
-              <Link href="/privacy" className="text-sm text-muted hover:text-ink">
-                Privacy
-              </Link>
-            </li>
+            {links.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-sm text-muted hover:text-ink">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
           </ul>
-        </div>
+        </nav>
       </div>
       <div className="border-t border-line">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-4 text-xs text-muted flex flex-wrap items-center justify-between gap-2">
           <p>
             © {new Date().getFullYear()} {site.name}. Licensed under GPLv3.
           </p>
-          <p>
-            No trackers, no accounts, no judgment. Just an aware little snail.
-          </p>
+          <p>No trackers, no accounts, no judgment. Just an aware little snail.</p>
         </div>
       </div>
     </footer>

@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { getGuideBySlug, getGuideMetas, GUIDE_CATEGORIES } from "@/lib/guides";
+import { extractToc } from "@/lib/toc";
+import { ArticleShell, headingComponents } from "@/components/ArticleShell";
+import { getTools } from "@/lib/tools";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -24,20 +27,37 @@ export default async function GuidePage({ params }: Props) {
   const guide = getGuideBySlug(slug);
   if (!guide) notFound();
 
-  const { content } = await compileMDX<{}>({ source: guide.content });
+  const { content } = await compileMDX<{}>({
+    source: guide.content,
+    components: headingComponents(),
+  });
   const category = GUIDE_CATEGORIES[guide.category];
+  const toc = extractToc(guide.content);
+
+  const toolsByName = new Map(getTools().tools.map((t) => [t.name.toLowerCase(), t]));
+  const sideLinks = (guide.relatedTools ?? [])
+    .map((name) => toolsByName.get(name.toLowerCase()))
+    .filter(Boolean)
+    .map((t) => ({ href: `/tools?q=${encodeURIComponent(t!.name)}`, label: `Tool: ${t!.name}` }));
+  const otherGuides = getGuideMetas().filter((g) => g.slug !== guide.slug).slice(0, 3);
 
   return (
-    <article className="py-10 max-w-3xl">
-      <header className="mb-8">
-        <nav className="text-sm text-muted" aria-label="Breadcrumb">
+    <ArticleShell
+      toc={toc}
+      breadcrumb={
+        <>
           <Link href="/guides" className="text-accent-strong hover:underline">Guides</Link>
-          <span aria-hidden="true"> / </span>
-          <span>{category?.label ?? guide.category}</span>
-        </nav>
-        <h1 className="mt-3 font-display text-3xl sm:text-4xl font-bold leading-tight">
-          {guide.title}
-        </h1>
+          {" / "}
+          {category?.label ?? guide.category}
+        </>
+      }
+      sideLinks={[
+        ...sideLinks,
+        ...otherGuides.map((g) => ({ href: `/guides/${g.slug}`, label: `Guide: ${g.title}` })),
+      ]}
+    >
+      <header className="mb-8">
+        <h1 className="font-display text-3xl sm:text-4xl font-bold leading-tight">{guide.title}</h1>
         {guide.date && (
           <p className="mt-2 text-xs text-muted">
             <time dateTime={guide.date}>{guide.date}</time>
@@ -59,13 +79,15 @@ export default async function GuidePage({ params }: Props) {
         </div>
       </header>
 
-      <div className="prose-guide">{content}</div>
+      <div className="prose-guide [&_h2]:scroll-mt-24">
+        {content}
+      </div>
 
-      <div className="mt-10 border-t border-line pt-6">
+      <div className="mt-10">
         <Link href="/guides" className="text-sm text-accent-strong hover:underline">
           ← All guides
         </Link>
       </div>
-    </article>
+    </ArticleShell>
   );
 }
