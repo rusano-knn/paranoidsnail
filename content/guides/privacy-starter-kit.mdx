@@ -1,84 +1,171 @@
 ---
-title: The Privacy Starter Kit
-description: Your first 20 minutes of digital hygiene, patiently explained — tools included.
+title: The 20-minute privacy starter kit
+description: Three simple things anyone can do today to cut down on tracking and make their accounts harder to break into. No technical skills needed.
 category: getting-started
 order: 1
 date: 2026-08-07
 tags: [getting-started, basics]
-tlDr: Change three defaults, get a password manager, and stop using your phone number as identity — in about 20 minutes.
-relatedTools: [Signal, Bitwarden, Mullvad VPN]
+tlDr: Switch your DNS, install an ad blocker, and turn on two-factor authentication. That's it. Twenty minutes, no jargon, no alarm bells.
+relatedTools: [NextDNS, Brave, Bitwarden]
 ---
 
-# The Privacy Starter Kit
+# The 20-minute privacy starter kit
 
-You don't need a weekend and a tinfoil hat. You need about twenty minutes and the willingness to
-change three defaults. That's it. Most people are leakier because of *habits*, not *threats* — and
-habits are easy to fix.
+Here is the thing about privacy advice on the internet: it is usually written for people who
+already know what an ISP is, who can draw you a diagram of how Tor works, and who think a weekend
+spent configuring your router sounds like a good time.
 
-> **Image: A simple 3-step flow diagram (Change defaults → Get a password manager → Stop using your
-> phone number as identity), snail-themed, with three labeled boxes.** — placeholder for owner to
-> author or request generation.
+This guide is not that. This guide is for the person who still has the default browser their
+laptop came with, who is not about to reinstall their operating system, and who has maybe thirty
+minutes before dinner.
 
-## TL;DR
+You do not need to become anonymous. You do not need to disappear. You just need to make yourself
+a harder, less interesting target. These three things do exactly that. You can do them in about
+twenty minutes, and you can undo all of them in about two if you ever feel like it. That is the
+whole deal: low effort, easy to undo, quietly effective.
 
-- Turn off the obvious leaks in your browser and phone settings.
-- Get a password manager and put every password in it. Today.
-- Stop letting "your phone number" be the master key to your accounts.
+> **Image: The three steps laid out as simple icons — a shield for DNS, a square with a red mask for
+> the ad blocker, a key for two-factor auth — in a row with the snail walking between them.**
+> (placeholder — owner adding the screenshot/infographic)
 
-## Prereqs
+## A note before you start
 
-- Nothing. No account to create, no software you must buy.
+None of this is a magic shield. A person determined to find you, or a government that wants their
+data, is a different problem. These steps are for the everyday stuff: the ads that follow you
+around, the sites that watch what you click, and the account you would be very sad to lose. That
+is a real and worthwhile improvement, and it's worth doing even though it's not perfect.
 
-## Step 1 — Change three defaults
+If at any step something feels like too much, skip it. Each step works on its own. Doing one is
+better than doing none.
 
-1. **Browser:** switch your default search engine off anything that tracks you. Use DuckDuckGo or
-   Startpage on your existing browser, or just use Tor Browser when you want the strong stuff.
-2. **Phone:** turn off "personalized ads" and location history. On a phone in our inventory, these
-   are buried in Settings → Privacy. Boring, but it stops the biggest obvious drain.
-3. **Apps:** revoke permissions for apps that don't need them (camera, mic, contacts, location).
-   Ask: *why does a flashlight app need my location?* The answer is never "so it can shine better."
+---
 
-> **Image: A phone Settings panel screenshot with the "Personalized ads" and "Location history"
-> toggles highlighted in red boxes with short annotations.** — placeholder.
+## Step 1: Switch your DNS (five minutes)
 
-## Step 2 — Get a password manager
+DNS is the thing that turns a name like `example.com` into the actual address of the website. By
+default, your internet provider runs this for you, which means, in plain terms: your internet
+provider can see a list of every website you visit. Every one.
 
-Passwords are the single thing holding your entire digital life together, and most people reuse one
-or two everywhere. That's like using the same house key for your door, your car, and your bank.
+You can change who does this job. It is a small setting that most people never touch, and it takes
+less than five minutes once you know where to look.
 
-1. Pick one: **Bitwarden** (easy, generous free tier) or **KeePassXC** (local-first, full control).
-2. Generate a long, random master password. Write it on paper and keep it somewhere safe — don't
-   save it in your browser in plain text.
-3. Move your important accounts into it. Let it generate unique passwords for the rest.
+**The good:** you stop handing your internet provider a complete list of everywhere you go online.
+You also get protection against "site not found" links that are actually traps — the good DNS
+providers block known bad addresses before your browser even reaches them. And you can do exactly
+the same thing on your phone, so you get the benefit everywhere.
 
-> **Image: A screenshot of Bitwarden's password generator generating a long random password, with an
-> arrow to "saved in vault" and a note "Vault is encrypted."** — placeholder.
+**The bad:** your new DNS provider now plays the role your internet provider used to play. You are
+trusting someone else instead — so you should pick someone whose whole business is privacy, not
+someone who makes money from your data. That is the trade, plain and simple: you are choosing who
+you trust, and you should choose carefully.
 
-## Step 3 — Stop using your phone number as identity
+### Where to point it
 
-Your phone number is effectively public, portable, and passed around by carriers. When it's your 2FA
-backup and your password reset, anyone who steals the number can try to steal the accounts.
+- **Cloudflare** (`1.1.1.2` / `1.0.0.2`) — fast, and the malware-blocking version specifically
+  stops known bad sites. Their business is not built on selling your browsing history.
+- **AdGuard DNS** — fast and focuses on blocking ads and trackers at the network level, so even
+  apps that don't respect your ad blocker can't call home about you.
+- **Quad9** (`9.9.9.9`) — run by a foundation, blocks known malware and phishing domains, and has
+  a strict no-logging stance.
 
-- Prefer an **authenticator app** (2FA codes live on your device) over SMS codes where an app is
-  allowed.
-- Use an email address for account recovery that you actually control, not SMS alone.
+You really cannot go far wrong with any of the three. Pick the one that sounds fine to you and
+move on — switching later is easy.
 
-> **Image: A small side-by-side comparison: "SMS code (can be SIM-swapped)" vs "Authenticator app
-> (stays on your device)" with a clearly-labeled tradeoff note.** — placeholder.
+> **Image: Screen captures showing where to change DNS on a laptop and on a phone, with the provider
+> names highlighted. Which exact screen depends on your device.** (placeholder)
 
-## Which tool
+### How to actually do it
 
-- Want the least effort? **Bitwarden + a good browser default + 2FA app.**
-- Want more control? **KeePassXC + Tor Browser + a hardware/2FA app.**
+Look up "change DNS" plus the name of your computer's operating system (Windows, macOS, or your
+phone's brand). Each one is a slightly different screen, but they all follow the same shape: find
+your network settings, find the DNS box, and type in the numbers above. Step-by-step guides exist
+for every device in minutes.
 
-## Good / bad tradeoffs
+If this feels like the one step you'd rather skip, skip it. Steps two and three are just as
+valuable and are even easier.
 
-- A password manager is a *single point of failure if you forget the master password* — but that's
-  still dramatically better than reusing passwords.
-- Phone-number-as-identity is convenient; giving it up is mildly inconvenient but much safer.
+---
 
-## Keep going
+## Step 2: Install an ad blocker (five minutes)
 
-- [Threat modeling for ordinary people](/guides/threat-modeling) — figure out who you're really
-  protecting against.
-- Browse the [tools](/tools) directory for the software above.
+You have probably noticed that some websites are impossible to read because there is an ad
+covering half the article, or a video that starts playing the moment the page opens. Those ads are
+not just annoying — they are also watching you. Every ad network on a page is a little camera, and
+the page loaded all of them just by you visiting.
+
+An ad blocker stops most of that noise and most of that watching, before it ever reaches you. It
+is a small program that runs inside your browser.
+
+**The good:** fewer ads, faster pages, less tracking. It genuinely does cut down how much of your
+browsing gets collected and sold. It also makes the web readable again, which is honestly worth it
+on its own.
+
+**The bad:** some sites quietly prefer blockers don't exist, and a small number will nag you or
+refuse to show content until you turn it off. That is their choice. Most of the internet just
+works, and you can always flip the blocker off for one site if you need to. The power stays with
+you.
+
+### Which blocker to use
+
+- **If you use Chrome** — install **AdGuard MV3**. Chrome changed its rules and moved away from the
+  classic blockers, and AdGuard's MV3 version is the one that still works properly there.
+- **If you use anything else — Brave, Firefox, Edge, or similar** — install **uBlock Origin**. It
+  is the long-time favorite, it's effective, and it stays out of your way.
+
+That is the entire decision. Chrome → AdGuard MV3. Everything else → uBlock Origin.
+
+> **Image: The browser's add-on page showing uBlock Origin (for non-Chrome) and AdGuard MV3 (for
+> Chrome), each marked with an "install" button.** (placeholder)
+
+---
+
+## Step 3: Turn on two-factor authentication (ten minutes)
+
+People reuse passwords. It is a fact of life. If a website you signed up for years ago leaks your
+password — and yes, that happens all the time — the person who gets it will try that same password
+on your email, your bank, your social media. This is how most accounts get broken into. It is not
+some master hacker; it is one leaked password reused everywhere.
+
+Two-factor authentication is the fix for this, and it is the single most valuable thing on this
+list.
+
+The idea is simple: to get in, you need the password *and* a second thing. Usually that second
+thing is a code sent to your phone, or a little number that appears in an app on your phone. Even
+if someone steals your password, they cannot get in without the second thing, and the second thing
+is on your phone, not on them.
+
+**The good:** it is the biggest single improvement in account safety you can make. It closes the
+door on the most common kind of break-in. And "something is better than nothing" really applies
+here — even the most basic option is a huge step up from no protection at all.
+
+**The bad:** it is a little bit more inconvenient. You have to have your phone nearby when you log
+in. And if you lose your phone without having backups set up, you can lock yourself out — which is
+exactly why you should set up a backup method (like printed backup codes) when you turn it on.
+Those discomforts are small compared to the account you won't lose.
+
+### Where to turn it on
+
+Start with the account that matters most to you — for most people that's email, because your email
+often controls password resets for everything else. Then do your bank, then your social media.
+You do not have to do every site tonight. Do the ones that would hurt. Most big sites have a
+"Security" or "Password and security" page where this lives, and once you know the shape of it,
+it's the same everywhere.
+
+> **Image: An example security settings screen showing "Two-step verification" with options: an
+> authenticator app and phone number, and why backup codes matter.** (placeholder)
+
+---
+
+## That's it
+
+Three things. DNS so your internet provider stops getting a full map of your day. An ad blocker so
+the ads stop following you around. Two-factor auth so a leaked password stops being a stolen
+account.
+
+Do them at your own pace. Do one, stop, come back for the next tomorrow. The version of you that
+does just one of these is already ahead of most people, and the snail approves of slow, steady,
+deliberate progress — it's practically the brand.
+
+If you want to go further, the door is right there: get a [password manager](/guides/password-manager),
+or learn [what your browser's incognito mode does and does not do](/guides/incognito-myth).
+But don't feel you have to. Small and steady is how this works.

@@ -1,61 +1,154 @@
 ---
-title: Incognito isn't privacy
-description: A five-minute myth-bust about your browser's "private" mode.
+title: Incognito mode, honestly explained
+description: What incognito actually does, what it doesn't, and when it's genuinely worth using.
 category: browsers
 order: 3
 date: 2026-08-07
 tags: [browsers, misconceptions]
-tlDr: Incognito stops your browser from remembering your history on your own device. It does not hide you from websites, your ISP, or the network.
+tlDr: Incognito keeps your browsing history off your own device for that session. It doesn't hide you from websites, your internet provider, or ad trackers. Use it for what it's for, just don't over-trust it.
 relatedTools: [Tor Browser, DuckDuckGo, Mullvad VPN]
 ---
 
-# Incognito isn't privacy
+# Incognito mode, honestly explained
 
-Open an incognito window and the little mascot winks at you as if it's your accomplice. It's not.
-"Private/incognito" mode does exactly one thing well — and people routinely overestimate it.
+Every browser has it. A button, a menu item, a little dark window that opens with some version of
+"you're now in private mode." It feels important. It feels like the browser is winking at you, like
+you two are in on a secret together.
 
-> **Image: An annotated screenshot of a browser's incognito new-tab page, with two columns:
-> "What it actually does" and "What people think it does", each with 2-3 short bullets.** — placeholder.
+Here's the honest thing: incognito mode is a useful little feature, and it is not a privacy shield.
+Those are two different things, and a lot of people (fairly) mix them up. This guide is here to sort
+that out, gently, with no tech talk and no scolding. If you've been using incognito and hoping it
+was hiding you, you haven't done anything wrong. You were just sold a friendlier story than the
+browser actually delivers.
+
+> **Image: A laid-back annotated screenshot of the incognito new-tab page, with the mascot and two
+> short columns: "Saves you from your own history" and "Doesn't hide you from the internet."** —
+> placeholder.
 
 ## What incognito actually does
 
-- Stops your browser from **saving history, cookies, and form data on your device** during the
-  session.
-- Clears most of that when you close the window.
+Let's start with the truth, because the truth is genuinely useful.
 
-That's the whole job. It's for sharing a computer, not for hiding from the internet.
+When you use a normal browsing window, your browser keeps a running record of what you do. It
+remembers the sites you visited, the things you typed into forms, the little login cookies that keep
+you signed in, the search terms you used. That record lives on your device. Someone could sit down
+at your computer afterward, open the history, and read most of your afternoon back to you.
+
+Incognito changes that one thing. While the window is open, the browser does not save your history
+or your cookies or your form entries to the device. When you close the window, what happened inside
+it is mostly gone from that machine.
+
+That's the whole job. That's the only job. And it's a real job, worth having. But notice what it
+isn't: it isn't hiding you from the internet. It's hiding your trail from *your own computer* — and
+from the person who might sit down at your computer next.
+
+Think of it like using a library's public computer to look something up. When you stand up and walk
+away, that machine doesn't hold a scrap of what you did. That's incognito. It does not make you
+invisible to the librarian or the library. It just means the machine forgets you.
 
 ## What it does NOT do
 
-- **Hide you from websites.** They still see your IP address, your browser fingerprint, and
-  everything you type into forms. You're not anonymous to the site — you're just a stranger to your
-  own history.
-- **Hide you from your ISP, your employer, or the network.** The traffic still flows through them
-  in plain sight from their side.
-- **Stop tracking.** Cross-site trackers and fingerprinting still work in incognito.
+This is the part nobody likes hearing, but it's the part that matters.
 
-> **Image: A simple diagram: User → ISP → Website, with an incognito window labelled "protects:
-> local history only", and clear X marks on ISP and Website showing what it does NOT protect.** —
-> placeholder.
+**It does not hide you from websites.** When you visit a site, the site sees you arrive. It sees
+your internet address, your device, your browser. It can track you. It could recognize you again if
+you came back. Incognito doesn't turn any of that off. The site just doesn't know that your browser
+forgot you — in fact, from the site's side, nothing about you changed at all.
 
-## When it IS useful
+**It does not hide you from your internet provider.** The company that sells you internet can still
+see the traffic flowing through their network. So can your employer, if you're using a work
+computer, or the owner of a Wi-Fi network you're on. Incognito does nothing here. The data still
+passes right by them.
 
-- Logging into a second account without a cookie clash.
-- Checking your own site as a fresh visitor.
-- Using a borrowed or public computer.
+**It does not stop tracking or ads.** Those little bits of code that follow you across the web and
+build a profile of your interests? They still work in incognito. A website can still read your
+screen size, your language, your plugins, all those small details that add up to a fingerprint as
+recognizable as a real one. Incognito doesn't scrub any of it.
+
+So let's put it plainly: incognito hides your history on your own device. That is the complete list.
+Everything else you might have hoped it does, it doesn't.
+
+> **Image: A simple flat diagram: User → ISP → Website, with incognito labeled "forgets history on
+> your device" and clear red X marks over the ISP and the website showing it does not protect
+> those.** — placeholder.
+
+## When it IS genuinely useful
+
+Now the good news, because we shouldn't throw the feature out. There are things incognito is truly
+the right tool for.
+
+**A shared or borrowed computer.** You're at a friend's house, or a hotel lobby machine, or the
+office, and you want to check your email without leaving your inbox open for the next person.
+Incognito is perfect for that.
+
+**A second login.** Many sites only let you be signed in as one person at a time — or they just make
+it awkward to switch. Incognito lets you check a second account without logging out of the first.
+
+**Seeing your own site the way strangers do.** If you run a website or a shop, incognito lets you
+look at your own page without your own cached login and preferences coloring the view. That's
+genuinely handy.
+
+**A cleaner, short-lived session.** Maybe you just don't want a dozen tabs of recipe searches slowly
+cluttering your history for years. That's a fine, honest reason to use incognito.
+
+None of these are shameful. These are exactly the things incognito was designed for. Use it for
+these. Just know what you're buying.
 
 ## What to use instead, for real privacy
 
-- **Tor Browser** for serious anonymity — it layers your traffic across volunteers' relays.
-- A **privacy-focused browser + VPN/DNS** for everyday leak-reduction.
-- A **private search engine** so your searches aren't archived into a profile.
+If your goal is actually to hide your browsing from the prying eyes around you — your provider, the
+ad trackers, the sites themselves — incognito won't get you there. Here's what actually would.
+
+**A VPN** hides the traffic from your internet provider. The provider sees a single encrypted stream
+and not much else. That covers one of incognito's blind spots. Mullvad and a few other honest VPNs
+do this well and keep no logs.
+
+**A privacy-focused browser and a tracker blocker** take care of the advertising side. They block
+the bits of code that follow you and shrink the fingerprint sites can read. Firefox, Brave, and
+DuckDuckGo's browser all do a decent job out of the box.
+
+**A private search engine** means your searches don't get filed into a profile about you. DuckDuckGo
+and Startpage are the usual names here.
+
+**Tor Browser** is the serious answer for real anonymity — the kind where you genuinely don't want
+anyone able to tell where you're browsing from. It routes your traffic through a chain of relays so
+that no single point — not the site, not your provider — sees the whole picture. Tor is powerful,
+and for most people it's more than they need on a daily basis. It's there when you want it.
+
+The short version: incognito is about you and your own device. VPNs, blockers, private search, and
+Tor are about the rest of the internet. Different tools, different jobs. No single one does the
+other's work.
 
 ## The honest takeaway
 
-Incognito is a convenience, not a security tool. Forcing yourself to "think it's private" is exactly
-the kind of calm, confident assumption the snail spends its whole life distrusting.
+Incognito mode is a convenience, not a security tool. It keeps your browsing off your own device for
+a session, and that is genuinely all it promises. Use it for the shared computer, the second login,
+the quick look you don't want lingering. That's fine. Enjoy it.
+
+Just don't ask it to hide you from the internet, because it can't, and no amount of hoping will
+change that. If you need the bigger privacy, there are better tools for it, and they're not hard to
+find.
+
+## The good and the bad
+
+Let's close with a straight tradeoff, because a tool this simple deserves one.
+
+**The good.** It's free, it's built into every browser, and it takes one click. For the things it's
+made for — a shared computer, a second account, a clean slate — it works perfectly. Very few privacy
+tools are that easy.
+
+**The bad.** It's easy to mistake for something much bigger than it is. The name and the marketing
+make it sound like privacy, and it isn't. If you take incognito as your real privacy plan, you'll
+end up unprotected without knowing it. That's the honest cost: not that the feature is bad, but that
+it's easy to over-trust.
+
+So there it is. Incognito is a nice, honest little tool with a slightly dishonest name. Keep it in
+your pocket for the things it does. Reach for a VPN, a blocker, and a private search engine when you
+actually want to disappear. You don't need to be paranoid to get this right — you just need to know
+what's what. That's the whole trick, and the snail is happy to walk you through it slowly.
 
 ## Next
 
-- Breadth: [Threat modeling for ordinary people](/guides/threat-modeling).
-- Depth: browse [Tor Browser and friends](/tools).
+- Breadth: [Threat modeling for ordinary people](/guides/threat-modeling) — figure out what you're
+  actually protecting against.
+- Depth: browse [Tor Browser and friends](/tools) for the tools that hide you for real.
